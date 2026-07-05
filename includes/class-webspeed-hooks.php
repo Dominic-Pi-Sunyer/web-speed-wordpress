@@ -44,7 +44,7 @@ class WebSpeed_Hooks {
 	 * and stop. Runs on every request but no-ops instantly unless the path matches.
 	 */
 	public static function maybe_serve_well_known() {
-		$uri  = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '';
+		$uri  = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 		$path = wp_parse_url( $uri, PHP_URL_PATH );
 		if ( WEBSPEED_WELL_KNOWN_PATH !== $path ) {
 			return;
@@ -57,7 +57,7 @@ class WebSpeed_Hooks {
 		header( 'Content-Type: text/plain; charset=utf-8' );
 		// The token is a server-generated URL-safe random string; emit it verbatim
 		// so it byte-matches what the server expects.
-		echo $settings['verify_token']; // phpcs:ignore WordPress.Security.EscapeOutput
+		echo esc_html( $settings['verify_token'] );
 		exit;
 	}
 
