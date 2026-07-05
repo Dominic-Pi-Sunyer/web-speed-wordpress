@@ -1,0 +1,21 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.sublime-*
+
+# PHP tooling (if added later)
+vendor/
+composer.lock
+
+# Node build tooling (if added later)
+node_modules/
+
+# Local env / logs
+.env
+*.log
+
+# Never ship the site token or any local secrets
+secrets.php
+*.local.php

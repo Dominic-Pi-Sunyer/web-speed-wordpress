@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<ruleset name="Web Speed">
+	<description>Coding standards for the Web Speed WordPress plugin.</description>
+
+	<!-- Scan every PHP file in this tree. -->
+	<file>.</file>
+	<arg name="extensions" value="php"/>
+	<arg value="ps"/><!-- show progress + sniff codes -->
+
+	<!--
+	  WordPress-Extra = WordPress-Core + best-practice, security, and i18n sniffs.
+	  The exhaustive docblock rules in WordPress-Docs are intentionally not
+	  required for this plugin; everything that affects correctness/security is.
+	-->
+	<rule ref="WordPress-Extra"/>
+
+	<!-- Enforce this plugin's text domain in all translation calls. -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="web-speed"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- Every global symbol must carry a Web Speed prefix. -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="webspeed"/>
+				<element value="WebSpeed"/>
+				<element value="WEBSPEED"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- Minimum WordPress version, for deprecation / compatibility checks. -->
+	<config name="minimum_wp_version" value="5.5"/>
+</ruleset>
