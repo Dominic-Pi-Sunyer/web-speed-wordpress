@@ -31,6 +31,23 @@ Web Speed fixes that at the source. Install this plugin and your site sends a cl
 
 This plugin requires a free Web Speed publisher account, created automatically the first time you click **Connect** (no signup form). See https://getwebspeed.io.
 
+== External services ==
+
+This plugin connects to the Web Speed API to publish structured, machine-readable maps of your public pages so AI agents read them accurately. Connecting to this service is required for the plugin to function.
+
+Data sent to Web Speed (api.getwebspeed.io), and when it is sent:
+
+* **When you click Connect:** your site's domain, and the contact email you optionally enter — used to create your publisher account and issue a site token.
+* **When you click Verify:** your site token, sent in a request header. Web Speed then fetches the public file at `/.well-known/webspeed-verify.txt` on your domain to confirm you own it.
+* **When a public post or page is published or edited, and once per week for every public page:** the rendered HTML of that public page, its URL, the plugin version, a content hash, and a timestamp — so Web Speed can build and refresh that page's map.
+
+The plugin never sends drafts, private or password-protected content, logged-in or personalized pages, visitor data, or credentials.
+
+This service is operated by Web Speed. By connecting your site you agree to Web Speed's terms and privacy policy:
+
+* Terms of Service — https://getwebspeed.io/legal
+* Privacy Policy — https://getwebspeed.io/legal
+
 == Installation ==
 
 1. Upload the `web-speed` folder to `/wp-content/plugins/`, or install the plugin through the Plugins screen.
